@@ -2,9 +2,129 @@
 <html>
   <head>
     <title>The Target Labs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      .primary {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .primary h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .primary .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      .secondary {
+        margin: 60px 0;
+      }
+      .secondary p + h4 {
+        margin-top: 28px;
+      }
+
+      .bio {
+        margin: 10px;
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
   <body>
-  <h1>The Target Labs</h1>
-  <p>The Target Labs provides the tools and analysis that progressive campaigns and non-profit organizations need to make data-driven decisions about what messages to deliver to what people in order to win.</p>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <h2 class="muted">Target Labs</h2>
+      </div>
+
+      <hr>
+
+      <div class="primary">
+        <h1>Small batch data analysis</h1>
+        <p class="lead">The Target Labs provides the tools and analysis that progressive campaigns and non-profit organizations need to make data-driven decisions about what messages to deliver to what people in order to win.</p>
+        <a class="btn btn-large btn-success" href="#contact">Get in touch</a>
+      </div>
+
+      <hr>
+      <div class="row-fluid secondary">
+        <div class="span6">
+          <h4>A modern campaign strategy</h4>
+          <p>Too many campaigns spend precious time and resources attempting to persuade voters who have already made up their minds and mobilizing voters who don't actually support them.</p>
+
+          <h4>Data science can help</h4>
+          <p>Using your existing voter contact information, the Target Labs creates advanced statistical models that can predict the sentiments of the voters you haven't been able to reach. We'll teach you how to use these scores to make data-driven decisions about which voters to contact with what messages.</p>
+        </div>
+
+        <div class="span6">
+          <h4>Make the best use of your resources</h4>
+          <p>We know time and money are finite, and we want to help your campaign direct them in the most effective way possible. We want to help you win.</p>
+
+          <h4>It's all about context</h4>
+          <p>At the Target Labs, we won't ever give you data without context. We want you to understand our methodology and what the output of our models really means for your work. When we improve our collective data literacy, everybody wins!</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3 id="about" class="text-center">Who we are</h3>
+      <div class="row-fluid">
+        <div>
+          <h4>Hallie Montoya Tansey</h4>
+          <h5>Co-founder / Principal</h5>
+          <img class="bio pull-left img-rounded" src="hallie.jpg" alt="Hallie Montoya Tansey" width="159" height="159">
+          <p>Hallie is a specialist in campaign field operations and the data and technology infrastructure that supports them. She worked on her first campaign in 2003 in San Francisco, and fell in love with electoral politics. She subsequently co-founded the League of Young Voters, a national non-profit organization that engages young people from traditionally disenfranchised communities in the political process. Hallie joined the Obama campaign in Nevada early in 2007, ultimately leading field operations for that campaign in New Mexico, Texas, Chicago HQ and Wisconsin. After the 2008 election, Hallie moved to DC and worked for the Obama Administration for more than 2 years at the Department of Education. Hallie has consulted for organizations including New Media Ventures, a network of angel investors in the political technology space, Organizer, a startup specializing in mobile field operations for campaigns, and 50+1 Strategies, a San Francisco-based political consultancy. Hallie studied analytics and targeting at the Haas School of Business at UC Berkeley, where she will earn her MBA in May 2013.</p>
+        </div>
+        <div>
+          <h4>Seth Walker</h4>
+          <h5>Co-founder / Principal</h5>
+          <img class="bio pull-left img-rounded" src="seth.jpg" alt="Seth Walker" width="159" height="159">
+          <p>Seth is a seasoned technologist with over 10 years of experience in building high performance web applications. When he's not supporting our clients at The Target Labs, Seth leads teams at Etsy focusing on core site infrastructure, working across the entire engineering organization to ensure fast and reliable experiences for visitors to a site generating 1.5 billion page views per month and growing fast. He's previously led teams at Jolt Online Gaming in Dublin, Ireland and as a Partner at Radical Designs in San Francisco, a full service technology consulting group serving non-profits and grassroots social change organizations. At Radical Designs, Seth built civic engagement and targeting tools for many organizations, including the League of Young Voters, Arts for LA, 350.org, and for San Francisco municipal elections.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3 id="contact" class="text-center">Get in touch!</h3>
+      <div>
+        <form action="javascript:alert('not yet available, email seth.h.walker@gmail.com');">
+          <div class="control-group">
+            <label class="control-label" for="contact-email">Email address</label>
+            <div class="controls">
+              <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input class="input-large" name="email" id="contact-email" type="email" placeholder="you@email.com">
+              </div>
+            </div>
+            <label class="control-lable" for="contact-message">Mesage</label>
+            <textarea class="input-xxlarge" rows="5" name="message" placeholder="Hi, I'm interested in your artisinal, handcrafted data analytics!"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+
+      <div class="footer">
+        <p>&copy; Target Labs 2013</p>
+      </div>
+    </div>
   </body>
 </html>
