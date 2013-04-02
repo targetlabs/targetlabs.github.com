@@ -56,7 +56,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
         <p>Upload your data</p>
     </div>
 
-    <div class="wizard-card" data-cardname="detail">
+    <div id="detail" class="wizard-card" data-cardname="detail">
         <h3>Details</h3>
         <div>
           Which is the dependant variable?
@@ -114,7 +114,18 @@ body { padding-top: 60px; /* 60px to make the container go all the way
             <ul class="ui-helper-reset"></ul>
           </div>
         </div>
-      </div>
+    </div>
+
+    <div class="wizard-success">
+        submission succeeded!
+    </div>
+
+    <div class="wizard-error">
+        submission had an error
+    </div>
+
+    <div class="wizard-failure">
+        submission failed
     </div>
 </div>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -134,7 +145,7 @@ var lines,
     wizard,
     supportField;
 
-var list_tpl = _.template("<li class=\"ui-state-default\"><a class=\"close\" href=\"#\">&times;</a><%= text %><% if(example) print(' ('+example+')') %></li>");
+var list_tpl = _.template("<li class=\"ui-state-default\"><a class=\"close\" href=\"#\">&times;</a><span><%= text %></span><% if(example) print(' ('+example+')') %></li>");
 
 function parseData(data) {
   lines = _.map($.csv.toArrays(data), function(line) { return _.map(line, function(el) { return $.trim(el); }) });
@@ -143,10 +154,38 @@ function parseData(data) {
   lookup = _.object(headers, _.range(headers.length))
 }
 
+function submit(wizard) {
+    var payload = {
+          dependentField: $("a.dropdown-toggle", "#detail").first().text(),
+          dependentValue: $("a.dropdown-toggle", "#detail").last().text(),
+          numbers: $("#numbers li span").contents().map(function(i,e) { return $(e).text() }).toArray(),
+          categorical: $("#categorical li span").contents().map(function(i,e) { return $(e).text() }).toArray(),
+          headers: headers,
+          csv: lines
+    };
+    $.ajax({
+        url: "/scores",
+        type: "POST",
+        data: payload,
+        traditional: true,
+        success: function(data, textStatus, jqXHR) {
+            $(".wizard-success").html(data);
+            wizard.submitSuccess(); // displays the success card
+            wizard.hideButtons(); // hides the next and back buttons
+            wizard.updateProgressBar(0); // sets the progress meter to 0
+        },
+        error: function() {
+            wizard.submitError(); // display the error card
+            wizard.hideButtons(); // hides the next and back buttons
+        }
+    });
+}
+
 function initWizard() {
     var options = {};
 
     wizard = $("#support-model").wizard(options);
+    wizard.on('submit', submit);
     wizard.show();
 
     populateAndWireUpDetails(headers);
@@ -239,7 +278,7 @@ function skipToFactors() {
     wizard._onNextClick();
     wizard._onNextClick();
 }
-$.get('orig100.csv').then(parseData).then(initWizard).then(skipToFactors);
+$.get('demo100.csv').then(parseData).then(initWizard).then(skipToFactors);
 //$.get('original.csv').then(parseData).then(initWizard).then(skipToFactors);
 //$.get('orig2000.csv').then(parseData).then(initWizard).then(skipToFactors);
 
