@@ -1,0 +1,100 @@
+vanid,countyfileid,lastname,firstname,middlename,street address,aptno,city,state,zip5,precinctname,party,sex,age,general11,general10,general09,general08,municipal07,presprimary12,presprimary08,primary10,primary08,special09,marsupport,Ethnicity,Tenant_Owner,birthplace
+228875,250212,Fischer,Diane,K,148 Beaumont Ave,,San Francisco,CA,94118,9134,DS,F,54,A,A,A,A,,A,A,A,,A,,West European,Owner,MICHIGAN
+217114,220786,Shaw,Lisa,Tull,460 Funston Ave,,San Francisco,CA,94118,9128,D,F,48,Y,Y,,Y,,,Y,,,,,West European,Tenant,CALIFORNIA
+53105,1.10E+06,Kane,Kimberly,Sarah,2325 Golden Gate Ave,519,San Francisco,CA,94118,9152,D,F,23,,Y,,Y,,,Y,,,,,Irish,,CALIFORNIA
+239388,276970,Rowland,James,Henry,699 36th Ave,208,San Francisco,CA,94121,9121,D,M,66,,Y,,Y,,,Y,,,,,West European,Owner,CONNECTICUT
+61300,1.10E+06,Ngo,Louie,Steven Luan,446 11th Ave,1,San Francisco,CA,94118,9129,D,M,29,,,,Y,,,Y,,,,0,Chinese,Tenant,US
+56306,1.10E+06,Hooton,Casey,Vance,744 47th Ave,,San Francisco,CA,94121,9136,D,U,32,,,,,,,,,,,,West European,Tenant,NEW MEXICO
+57607,1.10E+06,Bishop,Natalie,Anne,509 23rd Ave,,San Francisco,CA,94121,9124,D,F,24,,Y,,Y,,,Y,,,,,West European,Tenant,US
+63701,1.10E+06,Durgin,Keefe,Anthony,55 Almaden Ct,,San Francisco,CA,94118,9133,D,M,28,,,,Y,,,Y,,,,,West European,Owner,MASSACHUSETTS
+218945,225163,Hopper,Roberta,L,3132 Cabrillo St,,San Francisco,CA,94121,9122,DS,F,60,A,,,A,,,,A,,,0,Filipino,Tenant,PHILIPPINES
+62509,1.10E+06,Doron,Gilad,,2246 Fulton St,,San Francisco,CA,94117,9152,D,M,44,,,,Y,,,Y,,,,,,Tenant,ISRAEL
+55916,1.10E+06,To,William,,854 48th Ave,,San Francisco,CA,94121,9135,D,M,31,A,,,A,,,Y,,Y,,1,Chinese,Owner,US
+62840,1.10E+06,Geiser,Andrew,Joseph,2255 Lake St,11,San Francisco,CA,94121,9105,D,M,33,,,,Y,,,Y,,,,,West European,Tenant,CALIFORNIA
+100158,1.10E+06,Tye,Charles,Christopher,770 7th Ave,,San Francisco,CA,94118,9146,DS,M,29,,,,Y,,,,,,,,West European,Tenant,US
+162691,1.20E+06,Anderson,Alyxe,Lynne,375 16th Ave,,San Francisco,CA,94118,9109,DS,U,20,,Y,,,,,,,,,,West European,Tenant,CALIFORNIA
+103120,1.10E+06,Munro,Deborah,Clara,801 46th Ave,,San Francisco,CA,94121,9136,D,F,26,,,,Y,,,,,,,,West European,Tenant,US
+95343,1.10E+06,Ebaugh,Trent,David,800 Font Blvd,501,San Francisco,CA,94132,9101,DS,M,22,,,,Y,,,,,,,,West European,,CALIFORNIA
+52980,1.10E+06,Chandra,Michelle,Claire,2044 Clement St,,San Francisco,CA,94121,9108,DS,F,27,Y,Y,,A,Y,,A,A,A,A,,Other Asian,Tenant,ARIZONA
+161749,1.20E+06,Nosaka,Lauren,Hatsune,719 41st Ave,,San Francisco,CA,94121,9137,D,F,22,,,,,,,,,,,,Japanese,Owner,
+232506,258739,Marchese,Sister,Jeanne,478 12th Ave,,San Francisco,CA,94118,9128,D,F,77,Y,Y,Y,Y,Y,P,Y,Y,Y,Y,1,Italian,Tenant,CALIFORNIA
+51751,1.10E+06,Ghahreman,Sina,,2345 Golden Gate Ave,213,San Francisco,CA,94118,9152,DS,M,23,,,,,,,,,,,,West European,,GERMANY
+237363,271064,Ruoho,Chenah,Sybil,428 42nd Ave,,San Francisco,CA,94121,9101,DS,F,41,A,A,,A,,,,,A,,,East European,Owner,CALIFORNIA
+222708,235022,Schultz,Douglas,G,729 27th Ave,,San Francisco,CA,94121,9141,R,M,53,A,A,,A,,A,,,A,,,West European,Owner,MICHIGAN
+53335,1.10E+06,Rametta,Samuel,Paul,418 2nd Ave,101,San Francisco,CA,94118,9133,DS,M,26,,,,Y,,,Y,,,,,Italian,Tenant,CALIFORNIA
+60191,1.10E+06,Chapin Rifnzo,Demetrius,,540 28th Ave,,San Francisco,CA,94121,9123,D,M,36,Y,Y,,Y,,P,Y,Y,Y,,1,,Owner,CALIFORNIA
+161132,1.20E+06,Jantz,Tiffany,Kristin,79 Blake St,,San Francisco,CA,94118,9146,D,F,25,Y,Y,,,,P,,,,,,West European,,
+240375,279568,Corr,Sarah,Caroline,1526 Anza St,,San Francisco,CA,94118,9131,D,F,51,Y,Y,,Y,Y,P,Y,Y,Y,Y,,Irish,Tenant,CALIFORNIA
+94978,1.10E+06,Pare,Jacquelyn,Suzanne,2325 Golden Gate Ave,301,San Francisco,CA,94118,9152,D,F,22,,,,Y,,,,,,,,Hispanic,,US
+56906,1.10E+06,Young,Hong,,779 47th Ave,,San Francisco,CA,94121,9135,DS,M,23,,,,Y,,,,,,,,Chinese,Tenant,HONG KONG
+61947,1.10E+06,Kayce,Rachel,M,563 37th Ave,,San Francisco,CA,94121,9118,DS,F,33,,,,,,,A,,A,,,,Tenant,MASSACHUSETTS
+97413,1.10E+06,Siojo,Louise,Christine,3030 Turk Blvd,3,San Francisco,CA,94118,9149,D,F,28,,,,Y,,,,,,,,Filipino,,US
+167716,1.20E+06,Fajfar,Jessica,Lynn,719 Spruce St,,San Francisco,CA,94118,9134,DS,F,29,,,,,,,,,,,,,Tenant,OHIO
+171610,1.20E+06,Chan,Wai,Ching,2731 Golden Gate Ave,,San Francisco,CA,94118,9149,DS,U,44,,,,,,,,,,,1,Chinese,Owner,HONG KONG
+94824,1.10E+06,Meyers,Nicholas,Lee,4127 Clement St,,San Francisco,CA,94121,9101,D,M,33,,Y,,Y,,,,,,,0,West European,Tenant,US
+51483,1.10E+06,Teplitzky,Alexander,Fekeci,251 Willard St,4,San Francisco,CA,94118,9148,D,M,28,,,,Y,,,Y,,Y,,,East European,,WASHINGTON
+105211,1.10E+06,Jiang,Bi,Jiao,6940 Geary Blvd,3,San Francisco,CA,94121,9102,DS,F,50,A,A,A,A,,,,,,A,,Chinese,Tenant,CHINA
+21680,1.00E+06,Coogan,Devin,James,533 23rd Ave,,San Francisco,CA,94121,9124,G,M,25,,,,,,,,,,,,Irish,Tenant,NEW MEXICO
+57456,1.10E+06,Ripple,Diana,Isa,184 Cook St,,San Francisco,CA,94118,9134,D,F,25,,Y,,Y,,,,,,,,West European,Tenant,NEW YORK
+51510,1.10E+06,Vaughan,Alexandra,,2133 Balboa St,,San Francisco,CA,94121,9142,D,F,27,,,,Y,,,Y,,,,,West European,Tenant,OREGON
+223941,238451,McLeod,Robin,Gwynne,7650 Geary Blvd,0,San Francisco,CA,94121,9101,DS,M,55,,Y,,Y,Y,,Y,Y,Y,,,West European,Tenant,WASHINGTON
+63444,1.10E+06,Hurley,Meghan,Marjorie,87 Masonic Ave,,San Francisco,CA,94118,9151,D,F,28,,,,Y,,,Y,,,,,Irish,Tenant,CALIFORNIA
+224073,238811,Tachoires,Amy,Elizabeth,40 Shrader St,202,San Francisco,CA,94117,7101,D,F,37,,A,,A,,,A,,,,,,Tenant,CALIFORNIA
+55252,1.10E+06,Henscey,Anna,Jeanette,709 9th Ave,,San Francisco,CA,94118,9145,D,F,23,,,,Y,,,Y,,,,,,Tenant,CALIFORNIA
+100140,1.10E+06,Decollibus,Kathryn,Leigh,221 3rd Ave,0,San Francisco,CA,94118,9115,DS,F,26,,,,,,,,,,,,Italian,Tenant,
+100919,1.10E+06,Wong-Low,Anna,C,634 18th Ave,,San Francisco,CA,94121,9126,R,F,73,Y,Y,,,,,,Y,,,,,Owner,US
+54131,1.10E+06,Marlin,Kimberly,Terra,2329 Balboa St,,San Francisco,CA,94121,9142,D,F,29,,,,A,,,,,,,,Irish,Tenant,MISSOURI
+53841,1.10E+06,Lee,Cynthia,Jung,879 34th Ave,,San Francisco,CA,94121,9138,D,F,44,A,A,A,A,,A,A,A,,A,0,West European,Owner,CALIFORNIA
+53961,1.10E+06,McDonald,Ian,Gregory,506 37th Ave,,San Francisco,CA,94121,9118,DS,M,29,,A,,,,,A,,Y,,,Irish,,TEXAS
+61874,1.10E+06,Fong,Shelley,Lynn,710 7th Ave,,San Francisco,CA,94118,9146,D,F,30,,,,A,,,,,,,,Chinese,Owner,US
+160233,1.20E+06,Tcheng,Danny,,4912 California St,1,San Francisco,CA,94118,9112,D,M,36,,A,,,,,,,,,1,Russian,Tenant,CALIFORNIA
+167896,1.20E+06,Kalter,Scott,James,3065 Turk Blvd,,San Francisco,CA,94118,9149,DS,M,24,,,,,,,,,,,,West European,Tenant,CALIFORNIA
+169377,1.20E+06,Butterwick,Alexander,Forrest Albert,643 44th Ave,,San Francisco,CA,94121,9119,DS,M,32,,,,,,,,,,,,West European,Tenant,MICHIGAN
+222928,235592,Lorca,Radha,,230 4th Ave,,San Francisco,CA,94118,9115,G,F,48,A,A,,A,A,,A,,,,1,Other Asian,Owner,CALIFORNIA
+100319,1.10E+06,Truong,Judy,,3725 Cabrillo St,,San Francisco,CA,94121,9137,D,F,30,,,,Y,,,,,,,0,Chinese,Owner,US
+101935,1.10E+06,Holland,Tracey,Anne,241 9th Ave,3,San Francisco,CA,94118,9113,DS,F,27,,Y,,Y,,,,,,,,West European,Tenant,NEW HAMPSHIRE
+101225,1.10E+06,Sherman,Daniel,Steven,330 Parker Ave,513,San Francisco,CA,94118,9151,D,M,23,,,,Y,,,,,,,,West European,,CALIFORNIA
+231041,255469,Wong,Patty,,332 8th Ave,,San Francisco,CA,94118,9114,DS,F,66,A,A,A,,A,A,A,A,A,A,1,Chinese,Owner,HONG KONG
+51742,1.10E+06,Johnson,Christopher,,2325 Golden Gate Ave,,San Francisco,CA,94118,9152,D,M,23,Y,,,Y,,,,,,,,West European,,US
+52419,1.10E+06,Tidwell,Bruce,C,162 Seal Rock Dr,,San Francisco,CA,94121,9101,DS,M,38,,Y,,Y,,,Y,Y,,,,West European,Tenant,ILLINOIS
+54511,1.10E+06,Tesluk,Nadia,,614 28th Ave,,San Francisco,CA,94121,9141,D,F,64,,A,A,A,,A,A,,,A,0,East European,Owner,GERMANY
+51746,1.10E+06,Glazer,Irina,,678 46th Ave,,San Francisco,CA,94121,9119,D,F,56,A,A,,Y,Y,A,Y,Y,Y,,,,Tenant,UKRAINE
+61529,1.10E+06,Jew,Brandon,Chet,740 10th Ave,0,San Francisco,CA,94118,9145,DS,M,33,,,,Y,,,Y,,,,,Chinese,Owner,CALIFORNIA
+101323,1.10E+06,Nguyen,Peter,Hai,6438 Geary Blvd,305,San Francisco,CA,94121,9104,D,M,30,,,,Y,,,,,,,0,Chinese,Tenant,CALIFORNIA
+240415,279662,Hunter,Steven,A,1526 Anza St,,San Francisco,CA,94118,9131,D,M,57,Y,Y,Y,Y,Y,P,Y,Y,Y,Y,,West European,Tenant,OHIO
+55633,1.10E+06,Gross,Stuart,George,4950 Fulton St,202,San Francisco,CA,94121,9142,D,M,38,Y,Y,,A,,,Y,Y,,,,West European,Tenant,OKLAHOMA
+53436,1.10E+06,Roger,Samantha,Marie,799 La Playa St,1,San Francisco,CA,94121,9135,D,F,25,,Y,,Y,,,Y,,Y,,,West European,Tenant,CALIFORNIA
+224877,240849,Geiser,Christian,Edward,2255 Lake St,11,San Francisco,CA,94121,9105,D,M,42,A,A,,Y,,A,Y,,Y,,,West European,Tenant,CALIFORNIA
+299620,46148,Jermyn,Lois,,535 39th Ave,,San Francisco,CA,94121,9118,D,M,58,Y,Y,,Y,,,Y,,,Y,0,West European,Tenant,NEW YORK
+169125,1.20E+06,Brown,Adam,James,659 32nd Ave,,San Francisco,CA,94121,9122,DS,M,29,,,,,,,,,,,1,West European,Owner,NEBRASKA
+222861,235399,Shapiro,Frada,R,218 18th Ave,,San Francisco,CA,94121,9108,D,F,81,A,A,,A,A,A,A,A,A,A,0,,Tenant,PENNSYLVANIA
+12827,1.00E+06,Campbell,Donna,Jean,1344 Cabrillo St,,San Francisco,CA,94118,9127,D,F,59,,A,,A,,,,,A,A,,West European,Tenant,CALIFORNIA
+51542,1.10E+06,Marotto,Marcus,Antony,751 Arguello Blvd,0,San Francisco,CA,94118,9148,D,M,31,Y,Y,Y,Y,Y,P,Y,Y,,Y,1,Italian,Tenant,CALIFORNIA
+102884,1.10E+06,Collins,Ryan,,646 Funston Ave,,San Francisco,CA,94118,9128,D,M,35,,,,Y,,,,,,,,Irish,Tenant,US
+98072,1.10E+06,Rustia,Merrick,Robert,816 Cabrillo St,,San Francisco,CA,94118,9145,D,M,42,,,,Y,,,,,,,,Hispanic,Owner,US
+234372,262860,Lee,John,K,104 Stanyan St,,San Francisco,CA,94118,9134,DS,M,51,,Y,,Y,,,Y,,,,,Chinese,Owner,HONG KONG
+56647,1.10E+06,White,Tonya,Rene,405 12th Ave,402,San Francisco,CA,94118,9128,D,F,26,,,,A,,,,,,,,West European,,CALIFORNIA
+57062,1.10E+06,Dardon,Carlos,Joey,653 4th Ave,0,San Francisco,CA,94118,9147,D,M,40,,,,Y,,,Y,,,,0,Hispanic,Owner,UTAH
+299637,46165,Cheng,Steven,Ting Kuang,226 Point Lobos Ave,1,San Francisco,CA,94121,9101,D,M,39,,,,A,,,A,,A,,,Chinese,Owner,CHINA
+222450,234323,Spustek,Maria,Susanne,630 17th Ave,,San Francisco,CA,94121,9126,R,F,46,A,A,A,A,A,A,A,A,A,A,,Hispanic,Owner,VIRGINIA
+217528,221843,Calihan,Katherine,Roth,731 10th Ave,,San Francisco,CA,94118,9145,D,F,41,,Y,,Y,,,Y,,Y,,,Irish,Owner,PENNSYLVANIA
+63355,1.10E+06,Wright,Margot,Jean,354 25th Ave,2,San Francisco,CA,94121,9107,D,F,30,,Y,,Y,,,Y,,,,,West European,Tenant,WASHINGTON
+12881,1.00E+06,Nickell,Craig,J,430 2nd Ave,1,San Francisco,CA,94118,9133,D,M,35,Y,Y,,Y,A,,A,Y,A,Y,1,West European,Tenant,CALIFORNIA
+98336,1.10E+06,White,Ryan,,573 7th Ave,,San Francisco,CA,94118,9131,D,M,31,Y,Y,,Y,,,,Y,,,,West European,Tenant,CALIFORNIA
+98211,1.10E+06,Tingle,Kelly,Elizabeth,2345 Golden Gate Ave,305,San Francisco,CA,94118,9152,DS,F,23,,,,Y,,,,,,,,West European,,NEW JERSEY
+160776,1.20E+06,Schweigert,Kevin,Christopher,851 34th Ave,,San Francisco,CA,94121,9138,DS,M,27,,Y,,,,,,,,,,West European,Tenant,CALIFORNIA
+236018,266842,Shields,Stephanie,Lynn,765 7th Ave,,San Francisco,CA,94118,9146,D,F,48,Y,Y,,Y,Y,,Y,,,Y,1,Irish,Tenant,CALIFORNIA
+56076,1.10E+06,Gould,Jason,Anthony,190 Funston Ave,203,San Francisco,CA,94118,9112,D,M,39,Y,Y,,Y,,,Y,,Y,,,,Tenant,MICHIGAN
+95482,1.10E+06,Harband,Howard,Scott,140 20th Ave,305,San Francisco,CA,94121,9106,D,M,56,A,A,A,A,,A,,A,,A,,West European,Tenant,CALIFORNIA
+301539,47863,Dechollet,Aida,,671 45th Ave,,San Francisco,CA,94121,9119,D,F,92,,,,,,,,,,,,Hispanic,Tenant,
+299803,46315,Romani,Lawrence,A,250 Point Lobos Ave,602,San Francisco,CA,94121,9101,R,M,93,,,,Y,,,,,,,,Italian,Tenant,CALIFORNIA
+239609,277549,Annis,Ethan,Joseph,360 6th Ave,12,San Francisco,CA,94118,9115,D,M,45,A,A,A,A,,A,,A,,A,,West European,Tenant,MICHIGAN
+164004,1.20E+06,Roth,Sarah,Marie,463 34th Ave,,San Francisco,CA,94121,9102,D,F,26,,Y,,,,,,,,,,,Owner,US
+217545,221883,Ridel,Fredric,John,1445 Lake St,301,San Francisco,CA,94118,9106,D,M,71,Y,Y,Y,A,Y,P,Y,Y,Y,,,West European,Tenant,OHIO
+53559,1.10E+06,Machi,Tony,,485 38th Ave,5,San Francisco,CA,94121,9102,R,M,44,,,,,,,,,,,,Italian,Tenant,CALIFORNIA
+53112,1.10E+06,Gallagher,Emma,Louise,2325 Golden Gate Ave,119,San Francisco,CA,94118,9152,D,F,23,,,,Y,,,Y,,,,,Irish,,KENYA
+226538,244625,Low,Hubert,H,674 36th Ave,,San Francisco,CA,94121,9121,R,M,51,,Y,,Y,,,Y,Y,,,,,Owner,CALIFORNIA
+92526,1.10E+06,Young,Victoria,,738 19th Ave,,San Francisco,CA,94121,9144,D,F,49,A,A,,A,,,,,,,,Filipino,Owner,PHILIPPINES
+52246,1.10E+06,Kraft,Skye,,1709 Balboa St,,San Francisco,CA,94121,9126,DS,M,32,A,A,,A,A,,A,,,,,,Tenant,CALIFORNIA
+15092,1.00E+06,Dzida,John,Emmanuel,533 28th Ave,,San Francisco,CA,94121,9123,D,M,31,A,A,,A,A,A,Y,A,A,A,,East European,,CALIFORNIA
+63549,1.10E+06,Kim,Sophia,Ok,676 Arguello Blvd,6,San Francisco,CA,94118,9133,D,F,67,,,,,,,Y,,,,,Other Asian,Owner,KOREA
