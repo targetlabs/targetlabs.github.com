@@ -44,7 +44,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
 <body>
 <div class="wizard" id="support-model">
  
-    <h1>Support Model</h1>
+    <h1>The Target Labs</h1>
  
     <div class="wizard-card" data-cardname="prepare">
         <h3>Prepare</h3>
@@ -53,13 +53,15 @@ body { padding-top: 60px; /* 60px to make the container go all the way
  
     <div class="wizard-card" data-cardname="upload">
         <h3>Upload</h3>
-        <p>Upload your data</p>
+        <p>Here's what we'll need to make your model: 
+Voter file data on each individual voter in the district where your election is taking place (.csv format)
+Raw polling data containing responses from individual voters on whether they support your candidate or issue (.csv format)</p>
     </div>
 
     <div id="detail" class="wizard-card" data-cardname="detail">
-        <h3>Details</h3>
+        <h3>Support Data</h3>
         <div>
-          Which is the dependant variable?
+          Which column in the file you uploaded contains information about whether the people you polled support you?
           <div id="support-field-select" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Choose field</a>
             <b class="caret"></b>
@@ -70,7 +72,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
         </div>
 
         <div>
-          Which value means support?
+          Which value within that column means that a voter supports you?
           <div id="support-value-select" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Choose value</a>
             <b class="caret"></b>
@@ -82,8 +84,8 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     </div>
 
     <div id="factors" class="wizard-card" data-cardname="factors">
-        <h3>Factors</h3>
-        <p>Explain your factors</p>
+        <h3>Other Data</h3>
+        <p>We'll analyze the data in your file to find factors that help predict support for your issue or candidate.  Help us get started by sorting your data into categories.</p>
 
         <ul class="nav nav-tabs">
           <li class="active"><a href="#uniform-factors" data-toggle="tab">Uniform</a></li>
