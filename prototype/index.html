@@ -33,6 +33,11 @@ body { padding-top: 60px; /* 60px to make the container go all the way
 </script>
 <![endif]-->
 <link href="assets/css/bootstrap-wizard.css" rel="stylesheet" />
+<style>
+.wizard-modal.modal {
+  margin-left: -600px;
+}
+</style>
 <!-- Le fav and touch icons -->
 <link rel="shortcut icon" href="assets/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
@@ -171,8 +176,9 @@ function submit(wizard) {
         type: "POST",
         data: payload,
         traditional: true,
+        dataType: 'json',
         success: function(data, textStatus, jqXHR) {
-            $(".wizard-success").html(data);
+            $(".wizard-success").html("<pre style='white-space: pre'>" + data.summary + "</pre>");
             wizard.submitSuccess(); // displays the success card
             wizard.hideButtons(); // hides the next and back buttons
             wizard.updateProgressBar(0); // sets the progress meter to 0
@@ -185,7 +191,7 @@ function submit(wizard) {
 }
 
 function initWizard() {
-    var options = {};
+    var options = {width: '1200px', increaseHeight: 200};
 
     wizard = $("#support-model").wizard(options);
     wizard.on('submit', submit);
@@ -282,6 +288,12 @@ function skipToFactors() {
     wizard._onNextClick();
 }
 function fillForm() {
+    $("#support-field-select .dropdown-toggle").text('marsupport');
+    $("#support-value-select .dropdown-toggle").text('1');
+    $("#numbers li").slice(0,3).remove();
+    $("#categorical li").slice(3).remove();
+    $("#categorical li").slice(0,1).remove();
+    wizard.trigger('submit');
 }
 $.get('demo100.csv').then(parseData).then(initWizard).then(skipToFactors).then(fillForm);
 //$.get('original.csv').then(parseData).then(initWizard).then(skipToFactors);
