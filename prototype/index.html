@@ -293,7 +293,7 @@ function fillForm() {
     $("#numbers li").slice(0,3).remove();
     $("#categorical li").slice(3).remove();
     $("#categorical li").slice(0,1).remove();
-    wizard.trigger('submit');
+//    wizard.trigger('submit');
 }
 $.get('demo100.csv').then(parseData).then(initWizard).then(skipToFactors).then(fillForm);
 //$.get('original.csv').then(parseData).then(initWizard).then(skipToFactors);
