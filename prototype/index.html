@@ -15,10 +15,10 @@ body { padding-top: 60px; /* 60px to make the container go all the way
                              to the bottom of the topbar */ }
 </style>
 <style>
-#ignored a.close {
+#exclude-factors a.close {
   display: none;
 }
-#categorical li, #numbers li, #individual-factors li, #uniform-factors li, #ignored li {
+#include-factors li, #exclude-factors li {
   margin: 0 5px 5px 5px; padding: 5px; width: 50%;
 }
 .drop-target {
@@ -80,6 +80,14 @@ body { padding-top: 60px; /* 60px to make the container go all the way
   .alert-error .qq-upload-failed-text {
     display: inline;
   }
+
+  .qq-upload-button {
+    background-color: #5BB75B;
+  }
+
+  .qq-uploader {
+    width: 250px;
+  }
 </style>
 
 <!-- Le fav and touch icons -->
@@ -129,7 +137,8 @@ Raw polling data containing responses from individual voters on whether they sup
           <input type="checkbox" name="uniqueID">
           There is a common set of unique identifiers (such as county file ID) used in both .csv files that we can use to match records between them
         </label>
-        <div id="bootstrapped-fine-uploader-voter-data"></div>
+        <div id="bootstrapped-fine-uploader-combined-data"></div>
+        <div id="bootstrapped-fine-uploader-voter-data" style="display:none"></div>
         <div id="bootstrapped-fine-uploader-polling-data" style="display:none"></div>
     </div>
 
@@ -163,31 +172,16 @@ Raw polling data containing responses from individual voters on whether they sup
         <p>We'll analyze the data in your file to find factors that help predict support for your issue or candidate.  Help us get started by sorting your data into categories.</p>
 
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#uniform-factors" data-toggle="tab">Uniform</a></li>
-          <li><a href="#individual-factors" data-toggle="tab">Individual</a></li>
-          <li><a href="#numbers" data-toggle="tab">Numbers</a></li>
-          <li><a href="#categorical" data-toggle="tab">Categorical</a></li>
-          <li><a href="#ignored" data-toggle="tab">Ignored</a></li>
+          <li class="active"><a href="#include-factors" data-toggle="tab">We'll use these</a></li>
+          <li><a href="#exclude-factors" data-toggle="tab">We won't use these</a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="uniform-factors">
-            <h4>Uniform factors (we won't use these)</h4>
+          <div class="tab-pane active" id="include-factors">
+            <h4>We'll use these</h4>
             <ul class="ui-helper-reset"></ul>
           </div>
-          <div class="tab-pane" id="individual-factors">
+          <div class="tab-pane" id="exclude-factors">
             <h4>Individual and household-level factors (we won't use these)</h4>
-            <ul class="ui-helper-reset"></ul>
-          </div>
-          <div class="tab-pane" id="numbers">
-            <h4>Numbers</h4>
-            <ul class="ui-helper-reset"></ul>
-          </div>
-          <div class="tab-pane" id="categorical">
-            <h4>Categorical factors</h4>
-            <ul class="ui-helper-reset"></ul>
-          </div>
-          <div class="tab-pane" id="ignored">
-            <h4>Ignored</h4>
             <ul class="ui-helper-reset"></ul>
           </div>
         </div>
@@ -218,11 +212,7 @@ Raw polling data containing responses from individual voters on whether they sup
 
 <script type="text/javascript">
 
-var csv,
-    lines,
-    headers,
-    lookup,
-    transpose,
+var headers,
     wizard,
     supportField;
 
@@ -240,8 +230,7 @@ function submit(wizard) {
     var payload = {
           outcome: $("a.dropdown-toggle", "#detail").first().text(),
           outcome_success: $("a.dropdown-toggle", "#detail").last().text(),
-          numbers: $("#numbers li span").contents().map(function(i,e) { return $(e).text() }).toArray(),
-          categorical: $("#categorical li span").contents().map(function(i,e) { return $(e).text() }).toArray(),
+          factors: $("#include-factors li span").contents().map(function(i,e) { return $(e).text() }).toArray(),
           csv: csv
     };
     $.ajax({
@@ -274,54 +263,39 @@ function initWizard() {
     wizard = $("#support-model").wizard(options);
     wizard.on('submit', submit);
     wizard.show();
-
-    populateAndWireUpDetails(headers);
-    populateAndWireUpFactors(headers);
 }
 
-function populateAndWireUpFactors(headers) {
+function populateAndWireUpFactors(factors) {
 
-    $categorical = $("#categorical ul");
-    $numbers = $("#numbers ul");
-    $individual = $("#individual-factors ul");
-    $uniform = $("#uniform-factors ul");
+    $include = $("#include-factors ul");
+    $exclude = $("#exclude-factors ul");
 
     var uniform_threshold = 0.6;
     var categorical_threshold = 10;
 
     $("#factors").on("click", "a.close", function() {
-        $("#ignored ul").append($(this).closest('li').remove());
-        console.log("TODO: remove from form submit");
+        $("#exclude-factors ul").append($(this).closest('li').remove());
     });
 
     var auto_reject = ['StreetNo', 'AptNo', 'Phone'];
 
-    $(headers).each(function(i, header) {
-      var uniq_values = _.uniq(transpose[i]);
-      if(uniq_values.length == 1) {
-        $uniform.append(list_tpl({text: header, example: _.isEmpty(uniq_values[0]) ? 'no values' : uniq_values[0]}));
-      } else if(uniq_values.length == transpose[i].length) {
-        $individual.append(list_tpl({text: header, example: ""}));
-      } else if(uniq_values.length / transpose[i].length > uniform_threshold) {
-        $individual.append(list_tpl({text: header, example: "we think"}));
-      } else if(_.every(_.compact(transpose[i]), _.isFinite) && uniq_values.length > categorical_threshold) {
-        var examples = _.first(uniq_values, 3);
-        var example_str = examples.join(',');
-        if(uniq_values.length > 3) {
-          example_str = example_str + ",...";
-        }
-        $numbers.append(list_tpl({text: header, example: example_str}));
+    $.each(factors, function(header, factor) {
+      if(factor.nunique == 1) {
+        $exclude.append(list_tpl({text: header, example: _.isEmpty(factor.examples) ? 'no values' : factor.examples}));
+      } else if(factor.nunique == factor.count) {
+        $include.append(list_tpl({text: header, example: ""}));
+      } else if(factor.nunique / factor.count > uniform_threshold) {
+        $include.append(list_tpl({text: header, example: "we think"}));
       } else {
-        var examples = _.first(uniq_values, 3);
-        var example_str = examples.join(',');
-        if(uniq_values.length > 3) {
+        var example_str = factor.examples.join(',');
+        if(factors.nunique > 3) {
           example_str = example_str + ",...";
         }
-        $categorical.append(list_tpl({text: header, example: example_str}));
+        $include.append(list_tpl({text: header, example: example_str}));
       }
     });
 
-    $("#categorical ul, #numbers ul, #individual-factors ul, #uniform-factors ul, #ignored ul").sortable().disableSelection();
+    $("#include-factors ul, #exclude-factors ul").sortable().disableSelection();
     $("#factors .nav li").droppable({
       hoverClass: "drop-target",
       drop: function( event, ui ) {
@@ -337,9 +311,9 @@ function populateAndWireUpFactors(headers) {
     });
 }
 
-function populateAndWireUpDetails(headers) {
+function populateAndWireUpDetails(factors) {
     var $el = $("#support-field-select ul");
-    $(headers).each(function(i, header) {
+    $.each(factors, function(header) {
       $el.append($('<li>'+header+'</li>'));
     });
 
@@ -348,11 +322,13 @@ function populateAndWireUpDetails(headers) {
       var supportField = $(this).text();
       $("#support-field-select .dropdown-toggle").text(supportField);
       var i = _.indexOf(headers, supportField);
-      $next_el.html(_.chain(transpose[i]).map(function(line) { return $.trim(line); }).uniq().map(function(line) { return "<li>" + line + "</li>"; }).join("\n").value());
+      $next_el.html(_.chain(factors[supportField].examples).map(function(line) { return $.trim(line); }).map(function(line) { return "<li>" + line + "</li>"; }).join("\n").value());
+      $("#include-factors span:contains('"+supportField+"')").parent().find(".close").trigger("click");
     });
 
     $next_el.on('click', 'li', function(e) {
-      $("#support-value-select .dropdown-toggle").text($(this).text());
+      var text = $(this).text();
+      $("#support-value-select .dropdown-toggle").text(text);
     });
 }
 
@@ -369,13 +345,7 @@ return
 function fillForm() {
     $("#support-field-select .dropdown-toggle").text('marsupport');
     $("#support-value-select .dropdown-toggle").text('1');
-return;
-    $("#numbers li").slice(0,3).remove();
-    $("#categorical li").slice(-2).remove();
-    $("#categorical li").slice(-2,-1).remove();
-    $("#categorical li").slice(0,1).remove();
-    $("#categorical li").slice(3,10).remove();
-    $("#categorical li").slice(-4,-1).remove();
+return
     wizard.trigger('submit');
 }
 
@@ -434,25 +404,22 @@ function drawChart(data) {
       .text(function(d) { return d.name;});
 }
 
-$.get('demo100.csv').then(parseData).then(initWizard).then(skipToFactors).then(fillForm);
-//$.get('original.csv').then(parseData).then(initWizard).then(skipToFactors);
-//$.get('orig2000.csv').then(parseData).then(initWizard).then(skipToFactors);
 
 $("#dataFormatTwoFiles").on("click", function() { 
-  $("#bootstrapped-fine-uploader-voter-data .qq-upload-button div").html('<i class="icon-upload icon-white"></i> Upload Voter Data');
-  $("#dataFormatUniqueId,#bootstrapped-fine-uploader-polling-data").show() 
+  $("#bootstrapped-fine-uploader-combined-data").hide();
+  $("#dataFormatUniqueId,#bootstrapped-fine-uploader-polling-data,#bootstrapped-fine-uploader-voter-data").show(); 
 });
 $("#dataFormatSingleFile").on("click", function() { 
-  $("#bootstrapped-fine-uploader-voter-data .qq-upload-button div").html('<i class="icon-upload icon-white"></i> Upload Voter and Polling Data');
-  $("#dataFormatUniqueId,#bootstrapped-fine-uploader-polling-data").hide() 
+  $("#dataFormatUniqueId,#bootstrapped-fine-uploader-polling-data,#bootstrapped-fine-uploader-voter-data").hide(); 
+  $("#bootstrapped-fine-uploader-combined-data").show();
 });
 
-//createUploader(document.getElementById('bootstrapped-fine-uploader-polling-data'), 'Upload Polling Data');
-function createUploader(element, uploadText) {
+function createUploader(element, uploadText, dataType) {
   var uploader = new qq.FineUploader({
     element: element,
     request: {
-      endpoint: '/upload'
+      endpoint: '/upload',
+      params: {dataType: dataType}
     },
     text: {
       uploadButton: '<div><i class="icon-upload icon-white"></i> '+uploadText+'</div>'
@@ -467,11 +434,45 @@ function createUploader(element, uploadText) {
     classes: {
       success: 'alert alert-success',
       fail: 'alert alert-error'
+    },
+    callbacks: {
+      onComplete: uploadComplete
     }
   });
 }
-createUploader(document.getElementById('bootstrapped-fine-uploader-voter-data'), 'Upload Voter and Polling Data');
-createUploader(document.getElementById('bootstrapped-fine-uploader-polling-data'), 'Upload Polling Data');
+
+function uploadComplete(id, fileName, responseJSON) {
+  response = responseJSON;
+  console.log(id, fileName, responseJSON);
+  if (responseJSON.success) {
+    try {
+      var factors = responseJSON.factors;
+
+      populateAndWireUpDetails(factors);
+      populateAndWireUpFactors(factors);
+    } catch (e) {
+      lasterror = e;
+      console.log(e);
+    }
+  }
+}
+
+function prefill() {
+  $.get('demo100.csv').then(parseData).then(initWizard).then(skipToFactors).then(fillForm);
+  //$.get('original.csv').then(parseData).then(initWizard).then(skipToFactors);
+  //$.get('orig2000.csv').then(parseData).then(initWizard).then(skipToFactors);
+}
+
+$(".caret").on("click", function(caret) { $(caret).closest("a").trigger("click"); });
+
+createUploader(document.getElementById('bootstrapped-fine-uploader-combined-data'), 'Upload Voter and Polling Data', 'combined');
+createUploader(document.getElementById('bootstrapped-fine-uploader-voter-data'), 'Upload Voter Data', 'voter');
+createUploader(document.getElementById('bootstrapped-fine-uploader-polling-data'), 'Upload Polling Data', 'polling');
+
+initWizard();
+
+wizard._onNextClick();
+
 </script>
 </body>
 </html>
