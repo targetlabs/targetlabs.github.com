@@ -262,11 +262,11 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     <script type="text/javascript">window.onerror=function(msg,url,lineNumber){$.get('/error', {message: msg, url: url, lineNumber: lineNumber});return false;};</script>
     <script type="text/javascript">
 
-    var headers,
+    var TargetLabs = {},
         wizard,
         supportField;
 
-    var list_tpl = _.template("<li class=\"ui-state-default\"><a class=\"close\" href=\"#\">&times;</a><span><%= text %></span><% if(example) print(' ('+example+')') %></li>");
+    var list_tpl = _.template("<li class=\"ui-state-default\"><a class=\"close\" href=\"#\">&times;</a><span class=\"<%= type %>\"><%= text %></span><% if(example) print(' ('+example+')') %></li>");
 
     function parseData(data) {
       csv = data;
@@ -277,11 +277,13 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     }
 
     function submit(wizard) {
+        var $list = $("#include-factors li");
         var payload = {
               outcome: $("a.dropdown-toggle", "#detail").first().text(),
               outcome_success: $("a.dropdown-toggle", "#detail").last().text(),
-              factors: $("#include-factors li span").contents().map(function(i,e) { return $(e).text() }).toArray(),
-              csv: csv
+              categorical: $list.find(".categorical").contents().map(function(i,e) { return $(e).text() }).toArray(),
+              numbers: $list.find(".numeric").contents().map(function(i,e) { return $(e).text() }).toArray(),
+              filename: TargetLabs.filename
         };
         $.ajax({
             url: "/scores",
@@ -329,18 +331,20 @@ body { padding-top: 60px; /* 60px to make the container go all the way
         var auto_reject = ['StreetNo', 'AptNo', 'Phone'];
 
         $.each(factors, function(header, factor) {
+          var type = factor.numeric ? 'numeric' : 'categorical';
+
           if(factor.nunique == 1) {
-            $exclude.append(list_tpl({text: header, example: _.isEmpty(factor.examples) ? 'no values' : factor.examples}));
+            $exclude.append(list_tpl({text: header, example: _.isEmpty(factor.examples) ? 'no values' : factor.examples, type: type}));
           } else if(factor.nunique == factor.count) {
-            $include.append(list_tpl({text: header, example: ""}));
+            $include.append(list_tpl({text: header, example: "", type: type}));
           } else if(factor.nunique / factor.count > uniform_threshold) {
-            $include.append(list_tpl({text: header, example: "we think"}));
+            $include.append(list_tpl({text: header, example: "we think", type: type}));
           } else {
             var example_str = factor.examples.join(',');
-            if(factors.nunique > 3) {
+            if(factor.nunique > 3) {
               example_str = example_str + ",...";
             }
-            $include.append(list_tpl({text: header, example: example_str}));
+            $include.append(list_tpl({text: header, example: example_str, type: type}));
           }
         });
 
@@ -370,7 +374,6 @@ body { padding-top: 60px; /* 60px to make the container go all the way
         $el.on('click', 'li', function(e) {
           var supportField = $(this).text();
           $("#support-field-select .dropdown-toggle").text(supportField);
-          var i = _.indexOf(headers, supportField);
           $next_el.html(_.chain(factors[supportField].examples).map(function(line) { return $.trim(line); }).map(function(line) { return "<li>" + line + "</li>"; }).join("\n").value());
           $("#include-factors span:contains('"+supportField+"')").parent().find(".close").trigger("click");
         });
@@ -491,7 +494,8 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     }
 
     function uploadComplete(id, fileName, responseJSON) {
-      response = responseJSON;
+      TargetLabs.filename = fileName;
+      TargetLabs.response = responseJSON;
       console.log(id, fileName, responseJSON);
       if (responseJSON.success) {
         try {
