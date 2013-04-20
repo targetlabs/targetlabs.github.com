@@ -174,14 +174,14 @@ body { padding-top: 60px; /* 60px to make the container go all the way
             <h3>Upload</h3>
             <p>Here's what we'll need to make your model:<br>
     Voter file data on each individual voter in the district where your election is taking place (.csv format)<br>
-    Raw polling data containing responses from individual voters on whether they support your candidate or issue (.csv format)</p>
+    Polling data containing responses from individual voters on whether they support your candidate or issue (.csv format)</p>
             <label class="radio">
               <input type="radio" name="dataFormat" checked id="dataFormatSingleFile">
-              My raw polling data and my voter file data are both in one .csv file
+              My polling data and my voter file data are both in one .csv file
             </label>
             <label class="radio">
               <input type="radio" name="dataFormat" id="dataFormatTwoFiles">
-              My raw polling data and my voter file data are in different .csv files
+              My polling data and my voter file data are in different .csv files
             </label>
             <label class="checkbox" style="display:none" id="dataFormatUniqueId">
               <input type="checkbox" name="uniqueID">
@@ -224,12 +224,12 @@ body { padding-top: 60px; /* 60px to make the container go all the way
             <p>We'll analyze the data in your file to find variables that help predict support for your issue or candidate.  Help us get started by sorting your data into categories.</p>
 
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#include-factors" data-toggle="tab">We'll use these</a></li>
-              <li><a href="#exclude-factors" data-toggle="tab">We won't use these</a></li>
+              <li class="active"><a href="#include-factors" data-toggle="tab">We'll test these for predictiveness</a></li>
+              <li><a href="#exclude-factors" data-toggle="tab">We won't test these</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="include-factors">
-                <h4>We'll use these</h4>
+                <h4>We'll test these for predictiveness</h4>
                 <ul class="ui-helper-reset"></ul>
               </div>
               <div class="tab-pane" id="exclude-factors">
