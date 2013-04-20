@@ -266,9 +266,11 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     </script>
 
     <script type="template/underscore" id="results-tpl">
-      <a class="btn" href="<%= link %>">Download results</a>
+      <h1>We've generated your model!</h1>
       <h2>Predictive Power: <%= gof %> - <% if(gof > 80) { print("Great!") } else { print("Poor") } %></h2>
       <h2>Likely Supporters: <%= likely %> (out of <%= total %>)</h2>
+      <div><a class="btn btn-success" href="<%= link %>">Download scores</a></div>
+      <br>
     </script>
 
     <script type="template/underscore" id="list-tpl">
@@ -300,6 +302,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
             traditional: true,
             dataType: 'json',
             success: function(data, textStatus, jqXHR) {
+                TargetLabs.response = data;
                 $(".container").html(results_tpl({link: data.results, gof: data.gof, likely: data.nlikely, total: data.total}));
                 var coef = _.omit(data.coefficients, 'Intercept')
                 var chartdata = _.sortBy(_.map(coef, function(v,k) { return {name: k, value: v} }), function(d) { return -Math.abs(d.value)});
@@ -389,7 +392,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     }
 
     function drawChart(data, container) {
-        var margin = {top: 30, right: 10, bottom: 10, left: 10},
+        var margin = {top: 50, right: 10, bottom: 10, left: 10},
             width = 960 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
@@ -424,6 +427,13 @@ body { padding-top: 60px; /* 60px to make the container go all the way
         svg.append("g")
             .attr("class", "x axis")
             .call(xAxis);
+
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("text-anchor", "middle")
+            .attr("x", width / 2)
+            .attr("y", -30)
+            .text("Weight of variables in predicting outcome");
 
         svg.append("g")
             .attr("class", "y axis")
