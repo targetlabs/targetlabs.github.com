@@ -395,7 +395,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     }
 
     function drawChart(data, container) {
-        var margin = {top: 50, right: 10, bottom: 10, left: 10},
+        var margin = {top: 50, right: 10, bottom: 10, left: 100},
             width = 960 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
@@ -417,6 +417,14 @@ body { padding-top: 60px; /* 60px to make the container go all the way
 
         x.domain(d3.extent(data, function(d) { return d.value; })).nice();
         y.domain(data.map(function(d) { return d.name; }));
+
+        svg.selectAll(".label")
+          .data(data)
+          .enter()
+          .append("svg:text")
+          .attr("x", -100)
+          .attr("y", function(d) { return y(d.name) + 18; })
+          .text(function(d) { return d.name;});
 
         svg.selectAll(".bar")
             .data(data)
@@ -444,14 +452,6 @@ body { padding-top: 60px; /* 60px to make the container go all the way
             .attr("x1", x(0))
             .attr("x2", x(0))
             .attr("y2", height);
-
-        svg.selectAll(".label")
-          .data(data)
-          .enter()
-          .append("svg:text")
-          .attr("x", x(_.min(data, function(d) { return d.value; })))
-          .attr("y", function(d) { return y(d.name) + 18; })
-          .text(function(d) { return d.name;});
     }
 
     function createUploader(element, uploadText, dataType) {
