@@ -522,8 +522,10 @@ body { padding-top: 60px; /* 60px to make the container go all the way
 
     $(".form-signin button").on("click", function() { wizard.show(); return false; });
 
-    function skipToResults(wizard) {
+    function skipAhead(wizard) {
         $(".form-signin button").trigger("click");
+        wizard._onNextClick();
+        wizard._onNextClick();
         var $list = $("#include-factors li");
         $("a.dropdown-toggle", "#detail").first().text('marsupport');
         $("a.dropdown-toggle", "#detail").last().text('1');
@@ -535,6 +537,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
         submit(wizard);
     }
 
+    skipAhead(wizard);
     </script>
 </body>
 </html>
