@@ -426,7 +426,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
           .append("svg:text")
           .text(function(d) { return d.name;})
           .attr("x", -100)
-          .attr("y", function(d) { return y(d.name) + y.rangeBand() - (this.getBBox().height * 0.5); });
+          .attr("y", function(d) { return y(d.name) + (y.rangeBand() / 2) + (this.getBBox().height / 2)});
 
         svg.selectAll(".bar")
             .data(data)
