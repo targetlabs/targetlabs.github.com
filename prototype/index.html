@@ -28,6 +28,9 @@ body { padding-top: 60px; /* 60px to make the container go all the way
 .dropdown-menu {
   cursor: pointer;
 }
+#demo-upload {
+  margin: 5px;
+}
 </style>
 <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -155,25 +158,24 @@ body { padding-top: 60px; /* 60px to make the container go all the way
      
         <h1>The Target Labs</h1>
      
-        <div class="wizard-card" data-cardname="prepare">
-            <h3>Prepare</h3>
-            <p>Tell us what you want to do:</p>
+        <div class="wizard-card" data-cardname="upload">
+            <h3>Upload</h3>
+            <strong>Tell us what you want to do:</strong>
             <label class="radio">
-              <input type="radio" name="modelType" checked>
+              <input type="radio" name="modelType" value="support" checked>
               I want to make a support model
             </label>
             <label class="radio">
-              <input type="radio" name="modelType">
+              <input type="radio" name="modelType" value="turnout">
               I want to make a turnout model
             </label>
             <label class="radio">
-              <input type="radio" name="modelType">
+              <input type="radio" name="modelType" value="both">
               I want to make both a turnout and a support model
             </label>
-        </div>
      
-        <div class="wizard-card" data-cardname="upload">
-            <h3>Upload</h3>
+            <hr>
+
             <strong>Here's what we'll need to make your model:</strong>
             <ul>
               <li>Voter file data on each individual voter in the district where your election is taking place (.csv format)</li>
@@ -194,10 +196,12 @@ body { padding-top: 60px; /* 60px to make the container go all the way
             <div id="bootstrapped-fine-uploader-combined-data"></div>
             <div id="bootstrapped-fine-uploader-voter-data" style="display:none"></div>
             <div id="bootstrapped-fine-uploader-polling-data" style="display:none"></div>
+            <a href="#" id="demo-upload">demo</a>
         </div>
 
         <div id="detail" class="wizard-card" data-cardname="detail">
-            <h3>Support Data</h3>
+            <h3>Data</h3>
+            <div id="support-data">
             <div>
               <p>Which column in the file you uploaded contains information about whether the people you polled support you?</p>
               <div class="btn-group" id="support-field-select">
@@ -219,12 +223,41 @@ body { padding-top: 60px; /* 60px to make the container go all the way
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 </ul>
+              </div>
+            </div>
+            </div>
+
+            <hr>
+
+            <div id="turnout-data" style="display:none;">
+            <div>
+              <p>Which column in the file you uploaded contains information about whether the people you polled will turn out?</p>
+              <div class="btn-group" id="turnout-field-select">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Choose column 
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                </ul>
+              </div>
+            </div>
+
+            <hr>
+
+            <div>
+              <p>Which value within that column means that a voter will turn out?</p>
+              <div class="btn-group" id="turnout-value-select">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Choose value
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
         <div id="factors" class="wizard-card" data-cardname="factors">
-            <h3>Other Data</h3>
+            <h3>Choose Predictors</h3>
             <p>We'll analyze the data in your file to find variables that help predict support for your issue or candidate.  Help us get started by sorting your data into categories.</p>
 
             <ul class="nav nav-tabs">
@@ -316,11 +349,14 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     function submit(wizard) {
         var $list = $("#include-factors li");
         var payload = {
-              outcome: $("a.dropdown-toggle", "#detail").first().text(),
-              outcome_success: $("a.dropdown-toggle", "#detail").last().text(),
+              support_field: $("#support-field-select a.dropdown-toggle").text(),
+              support_value: $("#support-value-select a.dropdown-toggle").text(),
+              turnout_field: $("#turnout-field-select a.dropdown-toggle").text(),
+              turnout_value: $("#turnout-value-select a.dropdown-toggle").text(),
               categorical: $list.find(".categorical").contents().map(function(i,e) { return $(e).text() }).toArray(),
               numbers: $list.find(".numeric").contents().map(function(i,e) { return $(e).text() }).toArray(),
-              filename: TargetLabs.filename
+              filename: TargetLabs.filename,
+              type: modelType()
         };
         $.ajax({
             url: "/scores",
@@ -401,21 +437,33 @@ body { padding-top: 60px; /* 60px to make the container go all the way
 
     function populateAndWireUpDetails(factors) {
         var $el = $("#support-field-select ul");
+        var $next_el = $("#support-value-select ul");
+        var $field_toggle = $("#support-field-select .dropdown-toggle");
+        var $value_toggle = $("#support-value-select .dropdown-toggle");
+        _populateAndWireUpDetails(factors, $el, $next_el, $field_toggle, $value_toggle);
+
+        var $el = $("#turnout-field-select ul");
+        var $next_el = $("#turnout-value-select ul");
+        var $field_toggle = $("#turnout-field-select .dropdown-toggle");
+        var $value_toggle = $("#turnout-value-select .dropdown-toggle");
+        _populateAndWireUpDetails(factors, $el, $next_el, $field_toggle, $value_toggle);
+    }
+
+    function _populateAndWireUpDetails(factors, $el, $next_el, $field_toggle, $value_toggle) {
         $.each(factors, function(header) {
           $el.append($('<li>'+header+'</li>'));
         });
 
-        var $next_el = $("#support-value-select ul");
         $el.on('click', 'li', function(e) {
           var supportField = $(this).text();
-          $("#support-field-select .dropdown-toggle").text(supportField);
+          $field_toggle.text(supportField);
           $next_el.html(_.chain(factors[supportField].examples).map(function(line) { return $.trim(line); }).map(function(line) { return "<li>" + line + "</li>"; }).join("\n").value());
           $("#include-factors span:contains('"+supportField+"')").parent().find(".close").trigger("click");
         });
 
         $next_el.on('click', 'li', function(e) {
           var text = $(this).text();
-          $("#support-value-select .dropdown-toggle").text(text);
+          $value_toggle.text(text);
         });
     }
 
@@ -561,7 +609,35 @@ body { padding-top: 60px; /* 60px to make the container go all the way
         submit(wizard);
     }
 
-//    skipAhead(wizard);
+    function modelType() {
+        return $("input[name=modelType]:checked").attr("value");
+    }
+
+    $(".form-signin button").trigger("click");
+
+    $("#demo-upload").on("click", function() {
+        $.getJSON('/upload?filename=demo100.csv').then(function(data) {
+            uploadComplete(null, 'demo100.csv', data);
+        });
+    });
+
+    $("input[name=modelType]").on("click", function() {
+        switch($(this).attr("value")) {
+            case "both":
+                $("#support-data, #turnout-data").show();
+                break;
+            case "turnout":
+                $("#support-data").hide();
+                $("#turnout-data").show();
+                break;
+            case "support":
+                $("#turnout-data").hide();
+                $("#support-data").show();
+                break;
+            default:
+                console.log('default');
+        }
+    });
     </script>
 </body>
 </html>
