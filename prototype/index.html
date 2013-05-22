@@ -189,14 +189,18 @@ body { padding-top: 60px; /* 60px to make the container go all the way
               <input type="radio" name="dataFormat" id="dataFormatTwoFiles">
               My polling data and my voter file data are in different .csv files
             </label>
-            <label class="checkbox" style="display:none" id="dataFormatUniqueId">
-              <input type="checkbox" name="uniqueID">
-              There is a common set of unique identifiers (such as county file ID) used in both .csv files that we can use to match records between them
-            </label>
             <div id="bootstrapped-fine-uploader-combined-data"></div>
-            <div id="bootstrapped-fine-uploader-voter-data" style="display:none"></div>
-            <div id="bootstrapped-fine-uploader-polling-data" style="display:none"></div>
-            <a href="#" id="demo-upload">demo</a>
+            <div id="bootstrapped-fine-uploader-separate-data" style="display:none">
+              <div id="bootstrapped-fine-uploader-voter-data"></div>
+              <div id="bootstrapped-fine-uploader-polling-data"></div>
+              <br style="clear:both" />
+              <label>voter data unique id:</label>
+              <select id="voter-data-unique-id">
+              </select>
+              <label>polling data unique id:</label>
+              <select id="polling-data-unique-id">
+              </select>
+            </div>
         </div>
 
         <div id="detail" class="wizard-card" data-cardname="detail">
@@ -355,7 +359,8 @@ body { padding-top: 60px; /* 60px to make the container go all the way
               turnout_value: $("#turnout-value-select a.dropdown-toggle").text(),
               categorical: $list.find(".categorical").contents().map(function(i,e) { return $(e).text() }).toArray(),
               numbers: $list.find(".numeric").contents().map(function(i,e) { return $(e).text() }).toArray(),
-              filename: TargetLabs.filename,
+              filenames: JSON.stringify({combined: (TargetLabs.combined||{}).filename, voter: (TargetLabs.voter||{}).filename, polling: (TargetLabs.polling||{}).filename}),
+              uids: JSON.stringify({voter: $("#voter-data-unique-id").val(), polling: $("#polling-data-unique-id").val()}),
               type: modelType()
         };
         $.ajax({
@@ -555,15 +560,32 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     }
 
     function uploadComplete(id, fileName, responseJSON) {
-      TargetLabs.filename = fileName;
-      TargetLabs.response = responseJSON;
+      var dataType = responseJSON.dataType || 'combined';
+      TargetLabs[dataType] = TargetLabs[dataType] || {};
+      TargetLabs[dataType].filename = fileName;
+      TargetLabs[dataType].response = responseJSON;
       console.log(id, fileName, responseJSON);
       if (responseJSON.success) {
         try {
           var factors = responseJSON.factors;
-
-          populateAndWireUpDetails(factors);
-          populateAndWireUpFactors(factors);
+          if (dataType === 'combined') {
+            populateAndWireUpDetails(factors);
+            populateAndWireUpFactors(factors);
+          } else if (dataType === 'voter'){
+            var $el = $("#voter-data-unique-id");
+            $el.empty();
+            $.each(factors, function(header) {
+              $el.append("<option>"+header+"</option>");
+            });
+            populateAndWireUpFactors(factors);
+          } else if (dataType === 'polling'){
+            var $el = $("#polling-data-unique-id");
+            $el.empty();
+            $.each(factors, function(header) {
+              $el.append("<option>"+header+"</option>");
+            });
+            populateAndWireUpDetails(factors);
+          }
         } catch (e) {
           lasterror = e;
           console.log(e);
@@ -582,10 +604,10 @@ body { padding-top: 60px; /* 60px to make the container go all the way
 
     $("#dataFormatTwoFiles").on("click", function() {
       $("#bootstrapped-fine-uploader-combined-data").hide();
-      $("#dataFormatUniqueId,#bootstrapped-fine-uploader-polling-data,#bootstrapped-fine-uploader-voter-data").show(); 
+      $("#bootstrapped-fine-uploader-separate-data").show(); 
     });
     $("#dataFormatSingleFile").on("click", function() {
-      $("#dataFormatUniqueId,#bootstrapped-fine-uploader-polling-data,#bootstrapped-fine-uploader-voter-data").hide(); 
+      $("#bootstrapped-fine-uploader-separate-data").hide(); 
       $("#bootstrapped-fine-uploader-combined-data").show();
     });
 
@@ -614,6 +636,7 @@ body { padding-top: 60px; /* 60px to make the container go all the way
     }
 
     $(".form-signin button").trigger("click");
+    $("#dataFormatTwoFiles").trigger("click");
 
     $("#demo-upload").on("click", function() {
         $.getJSON('/upload?filename=demo100.csv').then(function(data) {
