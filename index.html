@@ -59,9 +59,9 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="active"><a id="home-nav" href="#">Home</a></li>
+          <li><a id="about-nav" href="#about">About</a></li>
+          <li><a id="contact-nav" href="#contact">Contact</a></li>
         </ul>
         <h2 class="muted">The Target Labs</h2>
       </div>
@@ -71,7 +71,7 @@
       <div class="primary">
         <h1>Small batch data analysis</h1>
         <p class="lead">The Target Labs provides the tools and analysis that progressive campaigns and non-profit organizations need to make data-driven decisions about what messages to deliver to what people in order to win.</p>
-        <a class="btn btn-large btn-success" href="#contact">Get in touch</a>
+        <a id="get-in-touch" class="btn btn-large btn-success" href="#contact">Get in touch</a>
       </div>
 
       <hr>
@@ -157,6 +157,12 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+
+      mixpanel.track("viewed company home");
+      mixpanel.track_links("#home-nav", "clicked home");
+      mixpanel.track_links("#about-nav", "clicked about");
+      mixpanel.track_links("#contact-nav", "clicked contact");
+      mixpanel.track_links("#get-in-touch", "clicked get-in-touch");
     </script>
   </body>
 </html>
