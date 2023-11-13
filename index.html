@@ -1,168 +1,192 @@
 <!doctype html>
 <html>
-  <head>
-    <title>The Target Labs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
-      body {
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
 
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 700px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
+<head>
+  <title>The Target Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <style type="text/css">
+    body {
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
 
-      .primary {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .primary h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .primary .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
+    .container-narrow {
+      margin: 0 auto;
+      max-width: 700px;
+    }
 
-      .secondary {
-        margin-bottom: 60px;
-      }
-      .secondary.first {
-        margin-top: 60px;
-        margin-bottom: 0px
-      }
-      .secondary p + h4 {
-        margin-top: 28px;
-      }
+    .container-narrow>hr {
+      margin: 30px 0;
+    }
 
-      .bio {
-        margin: 10px;
+    .primary {
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .primary h1 {
+      font-size: 72px;
+      line-height: 1;
+    }
+
+    .primary .btn {
+      font-size: 21px;
+      padding: 14px 24px;
+    }
+
+    .secondary {
+      margin-bottom: 60px;
+    }
+
+    .secondary.first {
+      margin-top: 60px;
+      margin-bottom: 0px
+    }
+
+    .secondary p+h4 {
+      margin-top: 28px;
+    }
+
+    .bio {
+      margin: 10px;
+    }
+  </style>
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function (e, b) {
+      if (!b.__SV) {
+        var a, f, i, g; window.mixpanel = b; a = e.createElement("script"); a.type = "text/javascript"; a.async = !0; a.src = ("https:" === e.location.protocol ? "https:" : "http:") + '//cdn.mxpnl.com/libs/mixpanel-2.2.min.js'; f = e.getElementsByTagName("script")[0]; f.parentNode.insertBefore(a, f); b._i = []; b.init = function (a, e, d) {
+          function f(b, h) { var a = h.split("."); 2 == a.length && (b = b[a[0]], h = a[1]); b[h] = function () { b.push([h].concat(Array.prototype.slice.call(arguments, 0))) } } var c = b; "undefined" !==
+            typeof d ? c = b[d] = [] : d = "mixpanel"; c.people = c.people || []; c.toString = function (b) { var a = "mixpanel"; "mixpanel" !== d && (a += "." + d); b || (a += " (stub)"); return a }; c.people.toString = function () { return c.toString(1) + ".people (stub)" }; i = "disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" "); for (g = 0; g < i.length; g++)f(c, i[g]);
+          b._i.push([a, e, d])
+        }; b.__SV = 1.2
       }
-    </style>
-    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
-    typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
-    b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+    })(document, window.mixpanel || []);
     mixpanel.init("d76e6523f8a6115fd025b39002cd16f7");</script><!-- end Mixpanel -->
-    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-  </head>
-  <body>
+</head>
 
-    <div class="container-narrow">
+<body>
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a id="home-nav" href="#">Home</a></li>
-          <li><a id="about-nav" href="#about">About</a></li>
-          <li><a id="contact-nav" href="#contact">Contact</a></li>
-        </ul>
-        <h2 class="muted">The Target Labs</h2>
+  <div class="container-narrow">
+
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><a id="home-nav" href="#">Home</a></li>
+        <li><a id="about-nav" href="#about">About</a></li>
+      </ul>
+      <h2 class="muted">The Target Labs</h2>
+    </div>
+
+    <hr>
+
+    <div class="alert alert-info text-center" role="alert">
+      The Target Labs is not currently taking new projects
+    </div>
+
+    <div class="primary">
+      <h1>Powerful data analysis<br /> for campaigns of all sizes</h1>
+      <p class="lead">At the Target Labs, we provide the tools and analysis that progressive campaigns and non-profit
+        organizations need to make data-driven decisions about what messages to deliver to what people in order to win.
+      </p>
+    </div>
+
+    <hr>
+    <div class="row-fluid secondary first">
+      <div class="span6">
+        <h4>A modern campaign strategy</h4>
+        <p>Too many campaigns spend precious time and resources attempting to persuade voters who have already made up
+          their minds and mobilizing voters who don't actually support them.</p>
       </div>
-
-      <hr>
-
-      <div class="primary">
-        <h1>Powerful data analysis<br/> for campaigns of all sizes</h1>
-        <p class="lead">At the Target Labs, we provide the tools and analysis that progressive campaigns and non-profit organizations need to make data-driven decisions about what messages to deliver to what people in order to win.</p>
-        <a id="get-in-touch" class="btn btn-large btn-success" href="#contact">Get in touch</a>
-      </div>
-
-      <hr>
-      <div class="row-fluid secondary first">
-        <div class="span6">
-          <h4>A modern campaign strategy</h4>
-          <p>Too many campaigns spend precious time and resources attempting to persuade voters who have already made up their minds and mobilizing voters who don't actually support them.</p>
-        </div>
-        <div class="span6">
-          <h4>Make the best use of your resources</h4>
-          <p>We know time and money are finite, and we want to help your campaign direct them in the most effective way possible. We want to help you win.</p>
-        </div>
-      </div>
-      <div class="row-fluid secondary">
-        <div class="span6">
-          <h4>Data science can help</h4>
-          <p>Using your existing voter contact information, the Target Labs creates advanced statistical models that can predict the sentiments of the voters you haven't been able to reach. We'll teach you how to use these scores to make data-driven decisions about which voters to contact with what messages.</p>
-        </div>
-        <div class="span6">
-          <h4>It's all about context</h4>
-          <p>At the Target Labs, we won't ever give you data without context. We want you to understand our methodology and what the output of our models really means for your work. When we improve our collective data literacy, everybody wins!</p>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row-fluid secondary">
-        <h3 id="about" class="text-center">Who we are</h3>
-        <div>
-          <h4>Hallie Montoya Tansey</h4>
-          <h5>Co-founder / Principal</h5>
-          <img class="bio pull-left img-rounded" src="hallie.jpg" alt="Hallie Montoya Tansey" width="159" height="159">
-          <p>Hallie is a specialist in campaign field operations and the data and technology infrastructure that supports them. She worked on her first campaign in 2003 in San Francisco, and fell in love with electoral politics. She subsequently co-founded the League of Young Voters, a national non-profit organization that engages young people from traditionally disenfranchised communities in the political process. Hallie joined the Obama campaign in Nevada early in 2007, ultimately leading field operations for that campaign in New Mexico, Texas, Chicago HQ and Wisconsin. After the 2008 election, Hallie moved to DC and worked for the Obama Administration for more than 2 years at the Department of Education. Hallie has consulted for organizations including New Media Ventures, a network of angel investors in the political technology space, Organizer, a startup specializing in mobile field operations for campaigns, and 50+1 Strategies, a San Francisco-based political consultancy. Hallie studied analytics and targeting at the Haas School of Business at UC Berkeley, where she earned her MBA in May 2013.</p>
-        </div>
-        <div>
-          <h4>Seth Walker</h4>
-          <h5>Co-founder / Principal</h5>
-          <img class="bio pull-left img-rounded" src="seth.jpg" alt="Seth Walker" width="159" height="159">
-          <p>Seth is a seasoned technologist with over 10 years of experience in building high performance web applications. When he's not supporting our clients at The Target Labs, Seth leads teams at Etsy focusing on core site infrastructure, working across the entire engineering organization to ensure fast and reliable experiences for visitors to a site generating 1.5 billion page views per month and growing fast. He's previously led teams at Jolt Online Gaming in Dublin, Ireland and as a Partner at Radical Designs in San Francisco, a full service technology consulting group serving non-profits and grassroots social change organizations. At Radical Designs, Seth built civic engagement and targeting tools for many organizations, including the League of Young Voters, Arts for LA, 350.org, and for San Francisco municipal elections.</p>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row-fluid secondary">
-        <h3 id="contact" class="text-center">Get in touch!</h3>
-        <form action="https://docs.google.com/forms/d/1bYDwYDaIdjy9sUfhONP38uZpTB8zvQsOiz88ALQAlK4/formResponse" method="POST">
-          <div class="control-group">
-            <label class="control-label" for="contact-email">Email address</label>
-            <div class="controls">
-              <div class="input-prepend">
-                <span class="add-on"><i class="icon-envelope"></i></span>
-                <input class="input-large" name="entry.1806339311" id="contact-email" type="email" placeholder="you@email.com">
-              </div>
-            </div>
-            <label class="control-lable" for="contact-message">Message</label>
-            <textarea class="input-xxlarge" rows="5" name="entry.357013994" placeholder="Hi, I'm interested in your artisanal, handcrafted data analytics!"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-      </div>
-
-      <div class="footer">
-        <p class="pull-left">&copy; The Target Labs 2015</p>
-        <div class="pull-right">
-          <div class="g-plusone" data-annotation="none" data-href="http://thetargetlabs.com/"></div>
-        </div>
+      <div class="span6">
+        <h4>Make the best use of your resources</h4>
+        <p>We know time and money are finite, and we want to help your campaign direct them in the most effective way
+          possible. We want to help you win.</p>
       </div>
     </div>
-    <script type="text/javascript">
-      (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-      })();
+    <div class="row-fluid secondary">
+      <div class="span6">
+        <h4>Data science can help</h4>
+        <p>Using your existing voter contact information, the Target Labs creates advanced statistical models that can
+          predict the sentiments of the voters you haven't been able to reach. We'll teach you how to use these scores
+          to make data-driven decisions about which voters to contact with what messages.</p>
+      </div>
+      <div class="span6">
+        <h4>It's all about context</h4>
+        <p>At the Target Labs, we won't ever give you data without context. We want you to understand our methodology
+          and what the output of our models really means for your work. When we improve our collective data literacy,
+          everybody wins!</p>
+      </div>
+    </div>
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-38603774-1']);
-      _gaq.push(['_trackPageview']);
+    <hr>
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    <div class="row-fluid secondary">
+      <h3 id="about" class="text-center">Who we are</h3>
+      <div>
+        <h4>Hallie Montoya Tansey</h4>
+        <h5>Co-founder / Principal</h5>
+        <img class="bio pull-left img-rounded" src="hallie.jpg" alt="Hallie Montoya Tansey" width="159" height="159">
+        <p>Hallie is a specialist in campaign field operations and the data and technology infrastructure that supports
+          them. She worked on her first campaign in 2003 in San Francisco, and fell in love with electoral politics. She
+          subsequently co-founded the League of Young Voters, a national non-profit organization that engages young
+          people from traditionally disenfranchised communities in the political process. Hallie joined the Obama
+          campaign in Nevada early in 2007, ultimately leading field operations for that campaign in New Mexico, Texas,
+          Chicago HQ and Wisconsin. After the 2008 election, Hallie moved to DC and worked for the Obama Administration
+          for more than 2 years at the Department of Education. Hallie has consulted for organizations including New
+          Media Ventures, a network of angel investors in the political technology space, Organizer, a startup
+          specializing in mobile field operations for campaigns, and 50+1 Strategies, a San Francisco-based political
+          consultancy. Hallie studied analytics and targeting at the Haas School of Business at UC Berkeley, where she
+          earned her MBA in May 2013.</p>
+      </div>
+      <div>
+        <h4>Seth Walker</h4>
+        <h5>Co-founder / Principal</h5>
+        <img class="bio pull-left img-rounded" src="seth.jpg" alt="Seth Walker" width="159" height="159">
+        <p>Seth is a seasoned technologist with over 10 years of experience in building high performance web
+          applications. When he's not supporting our clients at The Target Labs, Seth leads teams at Etsy focusing on
+          core site infrastructure, working across the entire engineering organization to ensure fast and reliable
+          experiences for visitors to a site generating 1.5 billion page views per month and growing fast. He's
+          previously led teams at Jolt Online Gaming in Dublin, Ireland and as a Partner at Radical Designs in San
+          Francisco, a full service technology consulting group serving non-profits and grassroots social change
+          organizations. At Radical Designs, Seth built civic engagement and targeting tools for many organizations,
+          including the League of Young Voters, Arts for LA, 350.org, and for San Francisco municipal elections.</p>
+      </div>
+    </div>
 
-      mixpanel.track("viewed company home");
-      mixpanel.track_links("#home-nav", "clicked home");
-      mixpanel.track_links("#about-nav", "clicked about");
-      mixpanel.track_links("#contact-nav", "clicked contact");
-      mixpanel.track_links("#get-in-touch", "clicked get-in-touch");
-    </script>
-  </body>
+    <hr>
+
+    <div class="footer">
+      <p class="pull-left">&copy; The Target Labs 2015</p>
+      <div class="pull-right">
+        <div class="g-plusone" data-annotation="none" data-href="http://thetargetlabs.com/"></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function () {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38603774-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    mixpanel.track("viewed company home");
+    mixpanel.track_links("#home-nav", "clicked home");
+    mixpanel.track_links("#about-nav", "clicked about");
+    mixpanel.track_links("#contact-nav", "clicked contact");
+    mixpanel.track_links("#get-in-touch", "clicked get-in-touch");
+  </script>
+</body>
+
 </html>
